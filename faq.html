@@ -9,53 +9,63 @@
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
     <style type="text/css">
-      body{
-        background: #eee;
+      body {
+        background: #f4f4f9;
         padding-top: 20px;
-        font-family: monospace;
+        font-family: 'Arial', sans-serif;
+        color: #333;
       }
-      .header{
-        border-radius: 20px 20px 0px 0px;
-        padding: 10px 0px;
-        background: purple;
+      .header {
+        border-radius: 20px 20px 0 0;
+        padding: 20px 0;
+        background: #6c757d;
         color: #fff;
         width: 100%;
         display: flex;
-        align-content: center;
+        align-items: center;
         justify-content: center;
       }
-      .faq-item{
-        margin-bottom: 40px;
-        margin-top: 40px;
+      .faq-item {
+        margin-bottom: 30px;
       }
-      .faq-body{
+      .faq-body {
         display: none;
-        margin-top: 30px;
-        background: #f8f9fa;
+        margin-top: 20px;
+        background: #e9ecef;
         padding: 20px;
         border-radius: 10px;
+        color: #495057;
       }
-      .faq-wrapper{
+      .faq-wrapper {
         width: 75%;
         margin: 0 auto;
       }
-      .faq-inner{
+      .faq-inner {
         padding: 30px;
-        background: aliceblue;
+        background: #ffffff;
         border-radius: 0 0 20px 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
-      .faq-plus{
+      .faq-plus {
         float: right;
         font-size: 1.4em;
         line-height: 1em;
         cursor: pointer;
-        color: purple;
+        color: #6c757d;
       }
-      hr{
-        background-color: #9b9b9b;
+      hr {
+        background-color: #dee2e6;
+        margin: 10px 0;
       }
       h3 {
         cursor: pointer;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        color: #007bff;
+      }
+      h3:hover {
+        color: #0056b3;
       }
     </style>
   </head>
@@ -70,7 +80,7 @@
           <div class="faq-inner">
             <div class="faq-item">
               <h3>
-                What does CSS stands for ?
+                What does CSS stand for?
                 <span class="faq-plus">&plus;</span>
               </h3>
               <div class="faq-body">
@@ -80,7 +90,7 @@
             <hr>
             <div class="faq-item">
               <h3>
-                What is JK Flip-Flop ?
+                What is JK Flip-Flop?
                 <span class="faq-plus">&plus;</span>
               </h3>
               <div class="faq-body">
