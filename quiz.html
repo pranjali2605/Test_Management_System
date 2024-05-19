@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,256 +10,466 @@
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<style>
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background-image: url('https://img.freepik.com/free-photo/grunge-metal-background-with-red-brushed-metal-texture_1048-13127.jpg?size=338&ext=jpg&ga=GA1.1.44546679.1699920000&semt=ais');
+    background-size: cover;
+    background-color: #cccccc;
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+}
 
+.start_quiz{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border: 2px solid #fff;
+    padding: 10px 30px;
+    color: #fff;
+    border-radius: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.start_quiz:hover{
+    background: #fff;
+    color: rgb(10, 5, 5);
+}
+
+.inactive{
+    display: none;
+}
+.disabled{
+    pointer-events: none;
+}
+
+.quiz-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px #777;
+    padding: 60px;
+    width: 100%;
+    max-width: 600px;
+    background: rgba(0,0,0,0.5);
+}
+.quiz-box h2{
+    font-size: 30px;
+}
+.quiz-box .option{
+    font-size: 18px;
+    border: 2px solid #fff;
+    margin: 20px 0;
+    padding: 12px 15px;
+    border-radius: 5px;
+    transition: all 0.3s;
+    cursor: pointer;
+    position: relative;
+}
+.quiz-box .option .fa{
+    position: absolute;
+    top: 6px;
+    right: 10px;
+    font-size: 30px;
+}
+
+.quiz-box .option.incorrect{
+    background: rgb(241, 153, 153);
+    color: rgb(184, 12, 12);
+    border-color: rgb(184, 12, 12);
+}
+.quiz-box .option.correct{
+    background: rgb(157, 246, 157);
+    color: rgb(6, 138, 28);
+    border-color: rgb(6, 138, 28);
+}
+
+.quiz-box .option:hover{
+    background: #e21a1a;
+}
+
+.quiz-footer{
+    margin-top: 50px;
+    padding-top: 30px;
+    border-top: 2px dashed #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100px;
+}
+.count_que,.total_que{
+    font-weight: bolder;
+    font-size: 20px;
+}
+.footer-left{
+    font-size: 18px;
+}
+.next-btn{
+    font-size: 18px;
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.next-btn:hover{
+    background: #fff;
+    color: #e21a1a;
+}
+
+.result-box{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    color: #fff;
+    box-shadow: 0 0 10px #777;
+    width: 100%;
+    max-width: 450px;
+    background: rgba(0,0,0,0.5);
+}
+.result-box h2{
+    font-size: 36px;
+    background: #fff;
+    color: #e21a1a;
+    text-align: center;
+    padding: 20px 0;
+}
+.result-box .result{
+    padding: 40px;
+}
+.result-box h3{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+
+.result-footer{
+    display: flex;
+    justify-content: space-around;
+    padding-bottom: 30px;
+}
+.result-footer .again-quiz,.result-footer .exit{
+    border: 2px solid #fff;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 24px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+.result-footer .again-quiz{
+    background: #e21a1a;
+    color: #fff;
+    border-color: #e21a1a;
+}
+.result-footer .again-quiz:hover{
+    background: #fff;
+    color: #e21a1a;
+    border-color: #fff;
+}
+
+.result-footer .exit{
+    background: #fff;
+    color: #e21a1a;
+    border-color: #fff;
+}
+
+.result-footer .exit:hover{
+    background: #e21a1a;
+    color: #fff;
+    border-color: #e21a1a;
+}
+
+/* Header section */
+#header {
+	position: fixed;
+	z-index: 1000;
+	left: 0;
+	top: 0;
+	width: 100vw;
+	height: auto;
+}
+#header .header {
+	min-height: 8vh;
+	background-color: rgba(31, 30, 30, 0.24);
+	transition: 0.3s ease background-color;
+}
+#header .nav-bar {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	max-width: 1300px;
+	padding: 0 10px;
+}
+#header .nav-list ul {
+	list-style: none;
+	position: absolute;
+	background-color: rgb(31, 30, 30);
+	width: 100vw;
+	height: 100vh;
+	left: 100%;
+	top: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	z-index: 1;
+	overflow-x: hidden;
+	transition: 0.5s ease left;
+}
+#header .nav-list ul.active {
+	left: 0%;
+}
+#header .nav-list ul a {
+	font-size: 2.5rem;
+	font-weight: 500;
+	letter-spacing: 0.2rem;
+	text-decoration: none;
+	color: white;
+	text-transform: uppercase;
+	padding: 20px;
+	display: block;
+}
+#header .nav-list ul a::after {
+	content: attr(data-after);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0);
+	color: rgba(240, 248, 255, 0.021);
+	font-size: 13rem;
+	letter-spacing: 50px;
+	z-index: -1;
+	transition: 0.3s ease letter-spacing;
+}
+#header .nav-list ul li:hover a::after {
+	transform: translate(-50%, -50%) scale(1);
+	letter-spacing: initial;
+}
+#header .nav-list ul li:hover a {
+	color: crimson;
+}
+#header .hamburger {
+	height: 60px;
+	width: 60px;
+	display: inline-block;
+	border: 3px solid white;
+	border-radius: 50%;
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	z-index: 100;
+	cursor: pointer;
+	transform: scale(0.8);
+	margin-right: 20px;
+}
+#header .hamburger:after {
+	position: absolute;
+	content: '';
+	height: 100%;
+	width: 100%;
+	border-radius: 50%;
+	border: 3px solid white;
+	animation: hamburger_puls 1s ease infinite;
+}
+#header .hamburger .bar {
+	height: 2px;
+	width: 30px;
+	position: relative;
+	background-color: white;
+	z-index: -1;
+}
+#header .hamburger .bar::after,
+#header .hamburger .bar::before {
+	content: '';
+	position: absolute;
+	height: 100%;
+	width: 100%;
+	left: 0;
+	background-color: white;
+	transition: 0.3s ease;
+	transition-property: top, bottom;
+}
+#header .hamburger .bar::after {
+	top: 8px;
+}
+#header .hamburger .bar::before {
+	bottom: 8px;
+}
+#header .hamburger.active .bar::before {
+	bottom: 0;
+}
+#header .hamburger.active .bar::after {
+	top: 0;
+}
+
+@keyframes hamburger_puls {
+	0% {
+		transform: scale(0.5);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
+		opacity: 0;
+	}
+}
+</style>
 </head>
 <body>
-    <section id="header">
-        <div class="header container">
-          <div class="nav-bar">
+<div id="header">
+    <div class="header">
+        <div class="nav-bar">
             <div class="brand">
-              <a href="http://127.0.0.1:5500/fee-project/index2.html#projects">
-                <h1><span>S</span>uper <span>C</span>oders</h1>
-              </a>
+                <a href="#hero">
+                    <h1><span>Qui</span>z</h1>
+                </a>
             </div>
             <div class="nav-list">
-              <div class="hamburger">
-                <div class="bar"></div>
-              </div>
-              <ul>
-                <li><a href="#hero" data-after="Home">Home</a></li>
-                <li><a href="#services" data-after="Service">Subject</a></li>
-                <li><a href="#projects" data-after="Projects">Study Material</a></li>
-                <li><a href="#about" data-after="About">About</a></li>
-                <li><a href="#contact" data-after="Contact">Contact</a></li>
-                <li><a href="http://127.0.0.1:5500/fee-project/login_2.html#">Login</a></li>
-              </ul>
+                <div class="hamburger">
+                    <div class="bar"></div>
+                </div>
+                <ul>
+                    <li><a href="#hero" data-after="Home">Home</a></li>
+                    <li><a href="#services" data-after="Service">Service</a></li>
+                    <li><a href="#about" data-after="About">About</a></li>
+                    <li><a href="#contact" data-after="Contact">Contact</a></li>
+                </ul>
             </div>
-          </div>
         </div>
-      </section>
-<div class="start_quiz">Start quiz</div>
+    </div>
+</div>
+<div class="start_quiz">
+    Start Quiz
+</div>
 <div class="quiz-box inactive">
-   <h2 class="que_text"></h2>
-   <div class="options">
-   </div>
-   <div class="quiz-footer">
-      <div class="footer-left">
-         <span class="count_que"></span> of <span class="total_que"></span> Questions
-      </div>
-      <div class="footer-right">
-         <div class="next-btn inactive">Next Question</div>
-      </div>
-   </div>
+    <h2>Question Text</h2>
+    <div class="option">Option 1 <i class="fa"></i></div>
+    <div class="option">Option 2 <i class="fa"></i></div>
+    <div class="option">Option 3 <i class="fa"></i></div>
+    <div class="option">Option 4 <i class="fa"></i></div>
+    <div class="quiz-footer">
+        <div class="footer-left">
+            <span class="count_que">1</span>/<span class="total_que">10</span>
+        </div>
+        <button class="next-btn">Next</button>
+    </div>
 </div>
 <div class="result-box inactive">
-   <h2>Result</h2>
-   <div class="result">
-      <h3 class="total-que">Total Questions : <span></span></h3>
-      <h3 class="right-ans">Right Answers : <span></span></h3>
-      <h3 class="wrong-ans">Wrong Answers : <span></span></h3>
-      <h3 class="percentage">Percentage : <span></span></h3>
-   </div>
-   <div class="result-footer">
-      <div class="again-quiz">Again Quiz</div>
-      <div class="exit">Exit</div>
-   </div>
+    <h2>Result</h2>
+    <div class="result">
+        <h3>You answered <span class="correct_ans">0</span>/<span class="total_que">10</span> questions correctly.</h3>
+    </div>
+    <div class="result-footer">
+        <button class="again-quiz">Try Again</button>
+        <button class="exit">Exit</button>
+    </div>
 </div>
 
 <script>
-var questions =[
-{
-num : 1,
-question : "What does HTML stand for?",
-answer : "Hyper Text Markup Language",
-options : [
-"Hyper Text Multiple Language",
-"Hyper Text Preprocessor",
-"Hyper Tool Multi Language",
-"Hyper Text Markup Language"
-]
-},
-{
-num: 2,
-question: "How many sizes of headers are available in HTML by default?",
-answer: "6",
-options: [
-"5",
-"3",
-"1",
-"6"
-]
-},
-{
-num: 3,
-question: "What are the types of lists available in HTML?",
-answer: "ordered,unordered Lists",
-options: [
-"ordered,unordered Lists",
-"Bulleted, numbered Lists",
-"Named, unnamed Lists",
-"None of these"
-]
-},
+$(document).ready(function() {
+    $(".start_quiz").click(function() {
+        $(this).addClass("inactive");
+        $(".quiz-box").removeClass("inactive");
+    });
 
-{
-num: 4,
-question: "What is the efffect of <b> tag?",
-answer: "It converts the text within it to bold font",
-options: [
-"It converts the text within it to bold font",
-"It is used to write black-colored font",
-"It is used to change the font-size",
-"None of the above"
-]
-},
-{
-num: 5,
-question: "Which of the following is correct about html?",
-answer: "Html uses tags defined within the language",
-options: [
-"Html uses user defined tags",
-"Html uses tags defined within the language",
-"Both A and B",
-"None of the above"
-]
-},
+    var currentQuestion = 0;
+    var score = 0;
 
+    var questions = [
+    {
+        question: "What is the capital of France?",
+        options: ["Paris", "London", "Rome", "Berlin"],
+        correct: 0
+    },
+    {
+        question: "What is 2 + 2?",
+        options: ["3", "4", "5", "6"],
+        correct: 1
+    },
+    {
+        question: "Which planet is known as the Red Planet?",
+        options: ["Earth", "Mars", "Jupiter", "Saturn"],
+        correct: 1
+    },
+    {
+        question: "Who wrote 'To Kill a Mockingbird'?",
+        options: ["Harper Lee", "Mark Twain", "Ernest Hemingway", "F. Scott Fitzgerald"],
+        correct: 0
+    },
+    {
+        question: "What is the largest ocean on Earth?",
+        options: ["Atlantic Ocean", "Indian Ocean", "Arctic Ocean", "Pacific Ocean"],
+        correct: 3
+    }
 ];
-</script>
-  
-<script>
-const start_btn = document.querySelector(".start_quiz");
-const quiz_box = document.querySelector(".quiz-box");
-const que_text = quiz_box.querySelector(".que_text");
-const options_box = quiz_box.querySelector(".options");
-const next_btn = document.querySelector(".next-btn");
-const total_q = document.querySelector(".quiz-footer .total_que");
-const count_que = document.querySelector(".quiz-footer .count_que");
-const result_box = document.querySelector(".result-box");
-
-const total_que_r = document.querySelector(".total-que span");
-const right_ans_r = document.querySelector(".right-ans span");
-const wrong_ans_r = document.querySelector(".wrong-ans span");
-const percentage = document.querySelector(".percentage span");
-
-const again_quiz = document.querySelector(".result-footer .again-quiz");
-const exit = document.querySelector(".result-footer .exit");
-
-const mark_wrong = '<i class="fa fa-times"></i>';
-const mark_check = '<i class="fa fa-check"></i>';
 
 
-
-start_btn.onclick =()=>{
-    quiz_box.classList.remove("inactive");
-    start_btn.classList.add("inactive");
-}
-
-total_q.innerText = questions.length;
-total_que_r.innerText = questions.length;
-
-var que_index = 0;
-var right_answers = 0;
-var wrong_answers = 0;
-count_que.innerText = que_index+1;
-ShowQuestion(que_index);
-
-function ShowQuestion(q_index){
-    que_text.innerText = questions[q_index].num+". "+ questions[q_index].question;
-var option_statement = "";
-for(var i=0; i<questions[q_index].options.length; i++){
-    option_statement += `<div class="option">${questions[q_index].options[i]}</div>`;
-}
-
-options_box.innerHTML = option_statement;
-
-var AllOptions = options_box.querySelectorAll(".option");
-
-    for(var j=0; j<AllOptions.length; j++){
-        AllOptions[j].setAttribute("onclick","UserAnswer(this)");
-    }
-    next_btn.classList.add("inactive");
-}
-
-
-next_btn.onclick=()=>{
-    que_index++;
-    
-    if(questions.length>que_index){
-        count_que.innerText = que_index+1;
-        ShowQuestion(que_index);
-    }else{
-        console.log("Questions Complete");
-        quiz_box.classList.add("inactive");
-        result_box.classList.remove("inactive");
-        right_ans_r.innerText = right_answers;
-        wrong_ans_r.innerText = wrong_answers;
-        percentage.innerText = ((right_answers*100)/questions.length).toFixed(2)+"%";
-
-        
+    function showQuestion(index) {
+        $(".quiz-box h2").text(questions[index].question);
+        $(".option").each(function(i) {
+            $(this).text(questions[index].options[i]);
+            $(this).removeClass("correct incorrect");
+        });
+        $(".count_que").text(index + 1);
+        $(".total_que").text(questions.length);
     }
 
-    if(questions.length-1==que_index){
-        next_btn.innerText = "Finish";
-    }
-}
-
-function UserAnswer(answer){
-    let userAns = answer.innerText;
-    let correctAns = questions[que_index].answer;
-    var AllOptions2 = options_box.querySelectorAll(".option");
-
-    next_btn.classList.remove("inactive");
-    if(userAns == correctAns){
-        console.log("%c Right Answer","color:green");
-        answer.classList.add("correct");
-        answer.insertAdjacentHTML("beforeend",mark_check);
-        right_answers++;
-    }else{
-
-        console.log("%c Wrong Answer","color:red");
-        answer.classList.add("incorrect");
-        answer.insertAdjacentHTML("beforeend",mark_wrong);
-        wrong_answers++;
-
-        for(var i=0; i<AllOptions2.length; i++){
-            if(AllOptions2[i].innerText==correctAns){
-                AllOptions2[i].classList.add("correct");
-                AllOptions2[i].insertAdjacentHTML("beforeend",mark_check);
-            }
+    $(".option").click(function() {
+        var selectedOption = $(this).index();
+        if (selectedOption == questions[currentQuestion].correct) {
+            $(this).addClass("correct");
+            score++;
+        } else {
+            $(this).addClass("incorrect");
         }
-    }
+        $(".option").addClass("disabled");
+        $(".option").each(function(i) {
+            if (i == questions[currentQuestion].correct) {
+                $(this).addClass("correct");
+            }
+        });
+    });
 
+    $(".next-btn").click(function() {
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+            showQuestion(currentQuestion);
+            $(".option").removeClass("disabled");
+        } else {
+            $(".quiz-box").addClass("inactive");
+            $(".result-box").removeClass("inactive");
+            $(".correct_ans").text(score);
+        }
+    });
 
-    for(var j=0; j<AllOptions2.length; j++){
-        AllOptions2[j].classList.add("disabled");
-    }
+    $(".again-quiz").click(function() {
+        currentQuestion = 0;
+        score = 0;
+        $(".result-box").addClass("inactive");
+        $(".start_quiz").removeClass("inactive");
+    });
 
-}
+    $(".exit").click(function() {
+        $(".result-box").addClass("inactive");
+        $(".start_quiz").removeClass("inactive");
+    });
 
-again_quiz.onclick=()=>{
-    quiz_box.classList.remove("inactive");
-    result_box.classList.add("inactive");
-
-    reset();
-
-}
-
-exit.onclick=()=>{
-    start_btn.classList.remove("inactive");
-    result_box.classList.add("inactive");
-
-   reset();
-}
-
-function reset(){
-    que_index = 0;
-    right_answers = 0;
-    wrong_answers = 0;
-    next_btn.innerText = "Next Question";
-   count_que.innerText = que_index+1;
-   ShowQuestion(que_index);
-}
+    showQuestion(currentQuestion);
+});
 </script>
 </body>
 </html>
