@@ -220,3 +220,155 @@
     </script>
   </body>
 </html>
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>FAQ</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.3/css/bootstrap.min.css">
+
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+    <style type="text/css">
+      body{
+        background: #eee;
+        padding-top: 20px;
+        font-family: monospace;
+      }
+      .header{
+        border-radius: 20px 20px 0px 0px;
+        padding: 10px 0px;
+        background: purple;
+        color: #fff;
+        width: 100%;
+        display: flex;
+        align-content: center;
+        justify-content: center;
+      }
+      .faq-item{
+        margin-bottom: 40px;
+        margin-top: 40px;
+      }
+      .faq-body{
+        display: none;
+        margin-top: 30px;
+      }
+      .faq-wrapper{
+        width: 75%;
+        margin: 0 auto;
+      }
+      .faq-inner{
+        padding: 30px;
+        background: aliceblue;
+      }
+      .faq-plus{
+        float: right;
+        font-size: 1.4em;
+        line-height: 1em;
+        cursor: pointer;
+      }
+      hr{
+        background-color: #9b9b9b;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="faq-wrapper">
+          <div class="header">
+            <h1>FAQs</h1>
+          </div>
+          <div class="faq-inner">
+            <div class="faq-item">
+              <h3>
+                What does CSS stands for ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+ CSS stands for- "Cascading Style Sheet"
+              </div>
+            </div>
+            <hr>
+            <div class="faq-item">
+              <h3>
+                What is JK Flip-Flop ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+                The JK Flip-Flop is a gated SR flip-flop with the addition of a clock input circuitry that prevents the illegal or invalid output condition that can occur when both inputs S and R are equal to logic level “1”.
+              </div>
+            </div>
+            <hr>
+            <div class="faq-item">
+              <h3>
+                what is the use of if-else statement in python  ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+                The if-else statement is used to execute both the true part and the false part of a given condition. If the condition is true, the if block code is executed and if the condition is false, the else block code is executed.
+              </div>
+            </div>
+            <hr>
+            <div class="faq-item">
+              <h3>
+                What is Bootstrap ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+                Bootstrap is a free front-end framework for faster and easier web development. Bootstrap includes HTML and CSS based design templates for typography, forms, buttons, tables, navigation, modals, image carousels and many other, as well as optional JavaScript plugins
+              </div>
+            </div>
+            <hr>
+            <div class="faq-item">
+              <h3>
+                How many types of layouts are available in bootstrap?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+                There are two major layouts for Bootstrap that are Fluid Layout and Fixed Layout. Fluid-layout: This uses the bootstrap .container-fluid class for the layout.
+              </div>
+            </div>
+            <hr>
+            <div class="faq-item">
+              <h3>
+                What is the full form of HTML? ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+HTML stands for- 'Hyper Text Markup Language'
+          </div>
+        </div>
+        <hr>
+            <div class="faq-item">
+              <h3>
+                How Many type of layouts are avalible in bootstrap ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+3
+      </div>
+    </div>
+    <hr>
+            <div class="faq-item">
+              <h3>
+                Why do we use python ?
+                <span class="faq-plus">&plus;</span>
+              </h3>
+              <div class="faq-body">
+Because it is easy to understand.
+</div>
+</div>
+
+
+    <script type="text/javascript">
+      $(".faq-plus").on('click',function(){
+        $(this).parent().parent().find('.faq-body').slideToggle();
+      });
+    </script>
+  </body>
+
+</html>
